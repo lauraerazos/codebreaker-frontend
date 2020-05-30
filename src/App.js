@@ -25,6 +25,20 @@ function App() {
       });
   };
 
+  const initGame = () => {
+    axios({
+      method: 'get',
+      url: `http://localhost:3001/initilize`,
+      responseType: 'json',
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+
   const getResult = () => {
     if (requestStatus !== 'success') {
       return null;
@@ -50,7 +64,7 @@ function App() {
       <button id='test-code-btn' onClick={testCode}>
         Probar código
       </button>
-      <button>Inicializar juego</button>
+      <button onClick={initGame}>Inicializar juego</button>
 
       {getResult()}
     </div>
